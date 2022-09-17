@@ -55,6 +55,7 @@ class ChatBot:
         return self.LemTokens(nltk.word_tokenize(text.lower().translate(self.remove_puncts)))
 
     def response(self, user_response):
+        print("user_response", user_response)
         robo1_response = ""
         TfidfVec = TfidfVectorizer(tokenizer=self.LemNormalize, stop_words='english')
         tfidf = TfidfVec.fit_transform(self.sent_tokens)
@@ -75,7 +76,7 @@ class ChatBot:
         print("BOT: My name is stark. Lets have a conversation! Also, if you want to exit anytime, just type Bye!")
 
         while(flag==True):
-            user_response = input()
+            user_response = input("YOU: ")
             user_response = user_response.lower()
             if (user_response!='bye'):
                 if (user_response=='thanks' or user_response=='thank you'):
